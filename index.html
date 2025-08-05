@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Fortnite Mobile 2.5</title>
   <style>
-    body {
-      background: linear-gradient(to bottom, #1e1e1e, #3a3a3a);
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-    .logo {
-      width: 220px;
-      margin-bottom: 20px;
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #4e2f8e, #1a1a2e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      user-select: none;
     }
 
     .container {
-      max-width: 600px;
-      margin: auto;
-      background: #2c2c2c;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #000;
+      background: #181b2a;
+      border-radius: 20px;
+      padding: 40px 50px;
+      max-width: 420px;
+      box-shadow:
+        0 0 10px #a366ff,
+        0 0 30px #7b4cff,
+        0 0 60px #5a2aff;
+      text-align: center;
+      border: 2px solid #7b4cff;
+    }
+
+    .logo {
+      width: 240px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 5px #a366ff);
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 3rem;
+      letter-spacing: 0.2em;
       margin-bottom: 10px;
+      color: #c899ff;
+      text-shadow: 0 0 10px #b87aff;
     }
 
     p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+      font-size: 1.1rem;
+      color: #d8bfffcc;
+      margin-bottom: 40px;
+      line-height: 1.4;
     }
 
     #downloadBtn {
-      background-color: #00bfff;
-      color: white;
-      padding: 15px 30px;
+      background: linear-gradient(90deg, #8b6cff, #c29bff);
       border: none;
-      border-radius: 10px;
-      font-size: 1.1em;
+      padding: 18px 50px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      border-radius: 40px;
+      box-shadow:
+        0 0 8px #d9aaff,
+        0 0 20px #c799ff;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      user-select: none;
     }
 
     #downloadBtn:hover {
-      background-color: #0099cc;
+      box-shadow:
+        0 0 20px #ffb3ff,
+        0 0 40px #e48fff;
+      background: linear-gradient(90deg, #b26eff, #e6b6ff);
+      transform: scale(1.05);
+    }
+
+    #downloadBtn:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 10px #a366ff;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://i.imgur.com/Vzhp5mQ.png" alt="loguinho do forts" class="logo">
+    <img
+      src="https://i.imgur.com/Vzhp5mQ.png"
+      alt="Fortnite Logo"
+      class="logo"
+    />
     <h1>Fortnite Mobile 2.5</h1>
-    <p>Agora disponível para Android! Gráficos melhorados, novo mapa e suporte para 120 FPS. Baixe agora e jogue antes dos seus amigos!</p>
+    <p>
+      Agora disponível para Android! Gráficos melhorados, novo mapa e suporte para
+      120 FPS. Baixe agora e jogue antes dos seus amigos!
+    </p>
     <button id="downloadBtn">Baixar Fortnite Mobile</button>
   </div>
 
   <script>
-    document.getElementById('downloadBtn').addEventListener('click', function () {
+    document.getElementById('downloadBtn').addEventListener('click', () => {
       const images = [
         'https://i.imgur.com/gQ8gtRa.png',
         'https://i.imgur.com/6Nh6SOB.png',
@@ -83,8 +122,8 @@
 
       function baixarImagem(url, nome) {
         fetch(url)
-          .then(res => res.blob())
-          .then(blob => {
+          .then((res) => res.blob())
+          .then((blob) => {
             const a = document.createElement('a');
             a.href = window.URL.createObjectURL(blob);
             a.download = nome;
