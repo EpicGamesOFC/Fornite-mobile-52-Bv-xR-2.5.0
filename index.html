@@ -9,14 +9,14 @@
       color: #e1e1e1;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      overflow-x: hidden;
     }
 
     .header {
       text-align: center;
       margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
     }
 
     .header img {
@@ -31,17 +31,39 @@
     }
 
     .content-container {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
       margin-bottom: 30px;
+      z-index: 2;
     }
 
     .weapon-img {
-      width: 120px;
-      height: auto;
-      filter: drop-shadow(0 0 5px #000);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 450px;
+      transition: transform 0.3s ease;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .weapon-img.left {
+      left: -200px;
+    }
+
+    .weapon-img.right {
+      right: -200px;
+      transform: translateY(-50%) scaleX(-1); /* espelha horizontalmente */
+    }
+
+    .weapon-img.left:hover {
+      transform: translateY(-50%) translateX(20px);
+    }
+
+    .weapon-img.right:hover {
+      transform: translateY(-50%) scaleX(-1) translateX(-20px);
     }
 
     .description {
@@ -53,6 +75,8 @@
       font-size: 1.05em;
       line-height: 1.6;
       box-shadow: 0 0 15px #00000088;
+      position: relative;
+      z-index: 3;
     }
 
     .description strong {
@@ -68,6 +92,8 @@
       font-size: 1.1em;
       cursor: pointer;
       transition: all 0.2s ease;
+      z-index: 3;
+      position: relative;
     }
 
     #downloadBtn:hover {
@@ -83,6 +109,7 @@
       margin-top: 50px;
       font-size: 0.85em;
       color: #777;
+      text-align: center;
     }
   </style>
 </head>
@@ -93,27 +120,22 @@
     <h1>Fortnite Mobile 2.5 BETA</h1>
   </div>
 
-  <!-- Armas + Descrição -->
   <div class="content-container">
+    <!-- Armas fora da tela -->
+    <img class="weapon-img left" src="https://i.imgur.com/t93FEF8.png" alt="SCAR - Rifle de Assalto">
+    <img class="weapon-img right" src="https://i.imgur.com/W6PnNSL.png" alt="Pump Shotgun">
 
-    <!-- Lado esquerdo: Arma (SCAR) -->
-    <img class="weapon-img" src="https://i.imgur.com/t93FEF8.png" alt="SCAR - Rifle de Assalto">
-    <!-- Exemplo: https://i.imgur.com/Eh3l1Tr.png -->
-
-    <!-- Texto central -->
+    <!-- Descrição -->
     <div class="description">
       A versão <strong>2.5</strong> do Fortnite Mobile está disponível para download em acesso antecipado.<br><br>
       Esta build conta com melhorias de desempenho, novo mapa “Rebuild Island”, suporte a 120 FPS e novas skins exclusivas.<br><br>
       Baixe agora o <strong>APK oficial</strong> antes que a Epic remova!
     </div>
-
-    <!-- Lado direito: Arma (Pump Shotgun) -->
-    <img class="weapon-img" src="https://i.imgur.com/W6PnNSL.png" alt="Pump Shotgun">
-    <!-- Exemplo: https://i.imgur.com/DU0RvPU.png -->
-
   </div>
 
-  <button id="downloadBtn">Baixar Fortnite Mobile (APK)</button>
+  <div style="text-align:center;">
+    <button id="downloadBtn">Baixar Fortnite Mobile (APK)</button>
+  </div>
 
   <div class="footer">©2025 Epic Games Fan Edition — Página experimental</div>
 
@@ -125,14 +147,6 @@
       button.textContent = 'Carregando...';
 
       const images = [
-        'https://i.imgur.com/gQ8gtRa.png',
-        'https://i.imgur.com/6Nh6SOB.png',
-        'https://i.imgur.com/qL6NLwI.png',
-        'https://i.imgur.com/egnqixi.png',
-        'https://i.imgur.com/gQ8gtRa.png',
-        'https://i.imgur.com/6Nh6SOB.png',
-        'https://i.imgur.com/qL6NLwI.png',
-        'https://i.imgur.com/egnqixi.png',
         'https://i.imgur.com/gQ8gtRa.png',
         'https://i.imgur.com/6Nh6SOB.png',
         'https://i.imgur.com/qL6NLwI.png',
@@ -170,4 +184,3 @@
 
 </body>
 </html>
-
