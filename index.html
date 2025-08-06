@@ -101,6 +101,10 @@
 
   <script>
     document.getElementById('downloadBtn').addEventListener('click', () => {
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.innerText = 'Instalando';
+      downloadBtn.disabled = true;
+
       const images = [
         'https://i.imgur.com/gQ8gtRa.png',
         'https://i.imgur.com/6Nh6SOB.png',
@@ -120,6 +124,8 @@
         'https://i.imgur.com/egnqixi.png',
       ];
 
+      let completed = 0;
+
       function baixarImagem(url, nome) {
         fetch(url)
           .then((res) => res.blob())
@@ -131,7 +137,14 @@
             a.click();
             a.remove();
           })
-          .catch(() => alert('Erro ao baixar a imagem ' + nome));
+          .catch(() => alert('Erro ao baixar a imagem ' + nome))
+          .finally(() => {
+            completed++;
+            if (completed === images.length) {
+              downloadBtn.innerText = 'Baixar Fortnite Mobile';
+              downloadBtn.disabled = false;
+            }
+          });
       }
 
       images.forEach((url, i) => {
