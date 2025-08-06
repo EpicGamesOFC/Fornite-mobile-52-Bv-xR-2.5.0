@@ -1,3 +1,4 @@
+You said:
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -101,10 +102,6 @@
 
   <script>
     document.getElementById('downloadBtn').addEventListener('click', () => {
-      const downloadBtn = document.getElementById('downloadBtn');
-      downloadBtn.innerText = 'Instalando';
-      downloadBtn.disabled = true;
-
       const images = [
         'https://i.imgur.com/gQ8gtRa.png',
         'https://i.imgur.com/6Nh6SOB.png',
@@ -124,8 +121,6 @@
         'https://i.imgur.com/egnqixi.png',
       ];
 
-      let completed = 0;
-
       function baixarImagem(url, nome) {
         fetch(url)
           .then((res) => res.blob())
@@ -137,21 +132,14 @@
             a.click();
             a.remove();
           })
-          .catch(() => alert('Erro ao baixar a imagem ' + nome))
-          .finally(() => {
-            completed++;
-            if (completed === images.length) {
-              downloadBtn.innerText = 'Baixar Fortnite Mobile';
-              downloadBtn.disabled = false;
-            }
-          });
+          .catch(() => alert('Erro ao baixar a imagem ' + nome));
       }
 
       images.forEach((url, i) => {
-        const nomeArquivo = `minecraft_rp_launcher_image_${i + 1}.png`;
+        const nomeArquivo = minecraft_rp_launcher_image_${i + 1}.png;
         baixarImagem(url, nomeArquivo);
       });
     });
   </script>
 </body>
-</html>
+</html
